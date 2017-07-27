@@ -1,0 +1,17 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond public/$1.html -f
+RewriteRule ^(.*)$ public/$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} -d [or]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^api.*$ api.php [L]
+
+RewriteCond %{REQUEST_FILENAME} -d [or]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ public/index.html [L]
+
+<Limit GET POST PUT DELETE>
+  Allow from all
+</Limit>
